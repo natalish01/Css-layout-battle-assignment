@@ -1,0 +1,278 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  color: #111827;
+  background-color: #ffffff;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 8px;
+  display: grid;
+  gap: 8px;
+  grid-template-columns: 280px 1fr;
+  grid-template-rows: 64px minmax(calc(100vh - 64px - 64px - 32px), auto) 64px;
+  grid-template-areas:
+    "header  header"
+    "sidebar main"
+    "footer  footer";
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* =========================================
+   DESKTOP LAYOUT
+========================================= */
+
+.header,
+.sidebar,
+.main,
+.footer {
+  border-radius: 8px;
+}
+
+/* Header (3-column grid: Logo | Nav | CTA) */
+.header {
+  grid-area: header;
+  background-color: #DBEAFE;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 20px;
+  .logo {
+    display: grid;
+    grid-auto-flow: column;
+    align-items: center;
+    gap: 10px;
+    font-size: 20px;
+    font-weight: 700;
+    .logo-icon {
+      font-size: 26px;
+    }
+  }
+  .header-nav {
+    display: grid;
+    grid-auto-flow: column;
+    justify-self: self-end;
+    gap: 24px;
+    font-size: 16px;
+    font-weight: 500;
+  }
+}
+
+
+.btn-primary {
+  display: inline-block;
+  background-color: #2557D6;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 10px 24px;
+  border-radius: 8px;
+  text-align: center;
+}
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+
+/* Sidebar */
+.sidebar {
+  grid-area: sidebar;
+  background-color: #E9D5FF;
+  padding: 32px 24px;
+  align-content: start;
+  h2 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 24px;
+  }
+  ul {
+    list-style: none;
+    display: grid;
+    gap: 20px;
+    font-size: 16px;
+    font-weight: 500;
+  }
+}
+
+/* Main Content */
+.main {
+  grid-area: main;
+  background-color: #D1FAE5;
+  padding: 48px 32px;
+  display: grid;
+  grid-template-columns: 1fr minmax(280px, 560px);
+  align-items: center;
+  gap: 24px;
+  h1 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+}
+
+
+.main-text p {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  margin-bottom: 24px;
+  max-width: 340px;
+}
+
+.tablet-copy,
+.mobile-copy {
+  display: none;
+}
+
+.image-container {
+  background-color: #B2CEBF;
+  border-radius: 8px;
+  width: 100%;
+  height: 320px;
+  display: grid;
+  place-items: center;
+  color: #7D9689;
+}
+
+/* Footer (2-column grid: Copyright | Links) */
+.footer {
+  grid-area: footer;
+  background-color: #FED7AA;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 400;
+  .footer-links {
+    display: grid;
+    grid-auto-flow: column;
+    gap: 20px;
+  }
+}
+
+.copyright-short {
+  display: none;
+}
+
+
+/* =========================================
+   TABLET LAYOUT (<= 768px)
+========================================= */
+@media (max-width: 768px) {
+  body {
+    grid-template-columns: 200px 1fr;
+    grid-template-rows: 64px auto 64px;
+  }
+
+  .header {
+    grid-template-columns: 1fr auto;
+    
+    .header-nav,
+    .header-cta {
+      display: none;
+    }
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .main {
+    grid-template-columns: 1fr;
+    align-content: start;
+    padding: 32px 20px;
+  }
+
+  .main-text .btn-primary {
+    width: 100%;
+  }
+
+  .desktop-copy {
+    display: none;
+  }
+
+  .tablet-copy {
+    display: block;
+  }
+
+  .image-container {
+    height: 240px;
+  }
+
+  .copyright-desktop {
+    display: none;
+  }
+
+  .copyright-short {
+    display: block;
+  }
+}
+
+/* =========================================
+   MOBILE LAYOUT (<= 480px / 375px target)
+========================================= */
+@media (max-width: 480px) {
+  body {
+    grid-template-columns: 1fr;
+    grid-template-rows: 56px auto auto auto;
+    grid-template-areas:
+      "header"
+      "main"
+      "sidebar"
+      "footer";
+  }
+
+  .header {
+    padding: 0 16px;
+  }
+
+  .main {
+    padding: 24px 16px;
+  }
+
+  .tablet-copy {
+    display: none;
+  }
+
+  .mobile-copy {
+    display: block;
+  }
+
+  .image-container {
+    height: 200px;
+  }
+
+  .sidebar {
+    padding: 20px 16px;
+  }
+
+  .sidebar h2 {
+    margin-bottom: 12px;
+  }
+
+  .sidebar ul {
+    gap: 10px;
+  }
+
+  .footer {
+    grid-template-columns: 1fr;
+    justify-items: start;
+    align-content: center;
+    padding: 14px 16px;
+    gap: 8px;
+  }
+}
