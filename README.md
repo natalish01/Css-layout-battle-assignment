@@ -1,5 +1,7 @@
 # Responsive Layout Technical Specification
 
+##  Live link- https://natalish01.github.io/Css-layout-battle-assignment/
+
 ## 1. Desktop View (1440px)
 
 ### Grid and Spacing
